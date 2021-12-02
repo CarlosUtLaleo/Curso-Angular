@@ -3,37 +3,47 @@ import { Country } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
-    selector: 'app-por-region',
-    templateUrl: './por-region.component.html',
-    styles: [],
+	selector: 'app-por-region',
+	templateUrl: './por-region.component.html',
+	styles: [
+		`
+			button {
+				margin-right: 5px;
+			}
+		`,
+	],
 })
 export class PorRegionComponent {
-    termino: string = '';
-    hayError: boolean = false;
+	termino: string = '';
+	hayError: boolean = false;
 
-    paises: Country[] = [];
+	regiones: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania'];
+	regionActiva: string = '';
 
-    constructor(private paisService: PaisService) {}
+	paises: Country[] = [];
 
-    buscar(termino: string) {
-        this.termino = termino;
-        this.hayError = false;
+	constructor(private paisService: PaisService) {}
 
-        this.paisService.buscarRegion(this.termino).subscribe(
-            (paises) => {
-                console.log(paises);
-                this.paises = paises;
-            },
-            (error) => {
-                console.log('Error');
-                console.info(error);
-                this.hayError = true;
-                this.paises = [];
-            }
-        );
-    }
+	buscar(termino: string) {
+		this.regionActiva = termino;
+		this.termino = termino;
+		this.hayError = false;
 
-    sugerencias(termino: string) {
-        console.log(termino);
-    }
+		this.paisService.buscarRegion(this.termino).subscribe(
+			(paises) => {
+				console.log(paises);
+				this.paises = paises;
+			},
+			(error) => {
+				console.log('Error');
+				console.info(error);
+				this.hayError = true;
+				this.paises = [];
+			}
+		);
+	}
+
+	sugerencias(termino: string) {
+		console.log(termino);
+	}
 }

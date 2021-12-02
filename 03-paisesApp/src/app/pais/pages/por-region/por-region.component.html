@@ -2,21 +2,25 @@
 <hr />
 
 <div class="row">
-    <div class="col">
-        <app-pais-input
-            placeholder="Buscar region..."
-            (onDebounce)="sugerencias($event)"
-            (onEnter)="buscar($event)"
-        ></app-pais-input>
-    </div>
+	<div class="col">
+		<button
+			(click)="buscar(region)"
+			*ngFor="let region of regiones"
+			class="btn"
+		>
+			{{ region }}
+		</button>
+	</div>
 </div>
 
 <hr />
 
-<div *ngIf="hayError" class="alert alert-danger">No se encontró nada con el término {{ termino }}</div>
+<div *ngIf="hayError" class="alert alert-danger">
+	No se encontró nada con el término {{ termino }}
+</div>
 
 <div *ngIf="paises.length > 0" class="row">
-    <div class="col">
-        <app-pais-tabla [paises]="paises"></app-pais-tabla>
-    </div>
+	<div class="col">
+		<app-pais-tabla [paises]="paises"></app-pais-tabla>
+	</div>
 </div>
