@@ -1,4 +1,6 @@
-<h2>Por region</h2>
+<h2>
+	Buscar por region: <strong>{{ regionActiva | titlecase }} </strong>
+</h2>
 <hr />
 
 <div class="row">
@@ -6,9 +8,10 @@
 		<button
 			(click)="buscar(region)"
 			*ngFor="let region of regiones"
-			class="btn"
+			class="btn btn-outline-primary"
+			[class.active]="region === regionActiva"
 		>
-			{{ region }}
+			{{ region | titlecase }}
 		</button>
 	</div>
 </div>
