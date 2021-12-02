@@ -42,8 +42,4 @@ export class PorRegionComponent {
 			}
 		);
 	}
-
-	sugerencias(termino: string) {
-		console.log(termino);
-	}
 }
