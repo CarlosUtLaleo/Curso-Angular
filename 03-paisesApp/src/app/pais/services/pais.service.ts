@@ -12,7 +12,7 @@ export class PaisService {
 
 	params: HttpParams = new HttpParams().set(
 		'fields',
-		'name,capital,population,cca2'
+		'name,capital,population,cca2,flags'
 	);
 
 	buscarPais(termino: string): Observable<Country[]> {

@@ -3,37 +3,55 @@ import { Country } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
-    selector: 'app-por-pais',
-    templateUrl: './por-pais.component.html',
-    styles: [],
+	selector: 'app-por-pais',
+	templateUrl: './por-pais.component.html',
+	styles: [
+		`
+			li {
+				cursor: pointer;
+			}
+		`,
+	],
 })
 export class PorPaisComponent {
-    termino: string = '';
-    hayError: boolean = false;
+	termino: string = '';
+	hayError: boolean = false;
 
-    paises: Country[] = [];
+	paises: Country[] = [];
+	paisesSugeridos: Country[] = [];
 
-    constructor(private paisService: PaisService) {}
+	mostrarSugerencias: boolean = false;
 
-    buscar(termino: string) {
-        this.termino = termino;
-        this.hayError = false;
+	constructor(private paisService: PaisService) {}
 
-        this.paisService.buscarPais(this.termino).subscribe(
-            (paises) => {
-                console.log(paises);
-                this.paises = paises;
-            },
-            (error) => {
-                console.log('Error');
-                console.info(error);
-                this.hayError = true;
-                this.paises = [];
-            }
-        );
-    }
+	buscar(termino: string) {
+		this.termino = termino;
+		this.hayError = false;
 
-    sugerencias(termino: string) {
-        console.log(termino);
-    }
+		this.mostrarSugerencias = false;
+
+		this.paisService.buscarPais(this.termino).subscribe(
+			(paises) => {
+				console.log(paises);
+				this.paises = paises;
+			},
+			(error) => {
+				console.log('Error');
+				console.info(error);
+				this.hayError = true;
+				this.paises = [];
+			}
+		);
+	}
+
+	sugerencias(termino: string) {
+		this.mostrarSugerencias = true;
+		this.termino = termino;
+		this.paisService.buscarPais(termino).subscribe(
+			(paises) => (this.paisesSugeridos = paises.splice(0, 5)),
+			(err) => {
+				this.paisesSugeridos = [];
+			}
+		);
+	}
 }

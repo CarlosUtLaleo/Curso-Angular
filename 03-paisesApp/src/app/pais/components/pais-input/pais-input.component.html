@@ -1,11 +1,15 @@
-<form (ngSubmit)="buscar()" autocomplete="off">
-    <input
-        (input)="teclaPresionada()"
-        [(ngModel)]="termino"
-        type="text"
-        name="termino"
-        placeholder="Buscar país"
-        class="form-control"
-        [placeholder]="placeholder"
-    />
+<form
+	class="animate__animated animate__fadeIn"
+	(ngSubmit)="buscar()"
+	autocomplete="off"
+>
+	<input
+		(input)="teclaPresionada()"
+		[(ngModel)]="termino"
+		type="text"
+		name="termino"
+		placeholder="Buscar país"
+		class="form-control"
+		[placeholder]="placeholder"
+	/>
 </form>
