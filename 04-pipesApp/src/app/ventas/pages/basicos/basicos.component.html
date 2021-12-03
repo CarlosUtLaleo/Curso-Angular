@@ -3,12 +3,18 @@
 
 <div class="grid">
 	<div class="col-4">
-		<p-card>1</p-card>
+		<p-card header="uppercase" [subheader]="nombreLower | uppercase">
+			{{ nombreLower | uppercase }}
+		</p-card>
 	</div>
 	<div class="col-4">
-		<p-card>2</p-card>
+		<p-card header="lowercase" [subheader]="nombreLower | lowercase">
+			{{ nombreLower | lowercase }}
+		</p-card>
 	</div>
 	<div class="col-4">
-		<p-card>3</p-card>
+		<p-card header="titlecase" [subheader]="nombreCompleto | titlecase">
+			{{ nombreCompleto | titlecase }}
+		</p-card>
 	</div>
 </div>
