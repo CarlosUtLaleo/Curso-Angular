@@ -14,13 +14,21 @@ export class NoComunesComponent {
 		masculino: 'invirarlo',
 		femenino: 'invitarla',
 	};
+	cambiarNombre() {
+		this.nombre = 'Valeria';
+		this.genero = 'femenino';
+	}
 
 	//i18nPlural
-	clientes: string[] = ['Maria', 'Pedro', 'Juan'];
+	clientes: string[] = ['Maria', 'Pedro', 'Juan', 'Joaquin', 'Gonzalo'];
 	clientesMapa = {
 		'=0': 'no tenemos ningun cliente esperando',
 		'=1': 'tenemos 1 cliente esperando',
 		'=2': 'tenemos 2 clientes esperando',
 		other: 'tenemos # clientes esperando',
 	};
+
+	borrarCliente() {
+		this.clientes.pop();
+	}
 }
