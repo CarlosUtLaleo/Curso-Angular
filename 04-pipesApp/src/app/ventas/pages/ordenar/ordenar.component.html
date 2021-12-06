@@ -15,7 +15,7 @@
 		<button
 			pButton
 			icon="pi pi-sort"
-			label="Valores"
+			label="Vuela"
 			class="mr-1 p-button-success"
 		></button>
 
@@ -30,7 +30,7 @@
 
 <div class="grid mt-1">
 	<div class="col">
-		<p-table [value]="heroes">
+		<p-table [value]="heroes | ordenar">
 			<ng-template pTemplate="header">
 				<tr>
 					<th>Nombre</th>
@@ -41,7 +41,7 @@
 			<ng-template pTemplate="body" let-heroe>
 				<tr>
 					<td>{{ heroe.nombre }}</td>
-					<td>{{ heroe.vuela }}</td>
+					<td>{{ heroe.vuela | vuela | titlecase }}</td>
 					<td>{{ heroe.color }}</td>
 				</tr>
 			</ng-template>
