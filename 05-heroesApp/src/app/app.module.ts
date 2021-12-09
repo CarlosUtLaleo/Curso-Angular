@@ -6,9 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
 	declarations: [AppComponent, ErrorPageComponent],
-	imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule],
+	imports: [BrowserModule,HttpClientModule,BrowserAnimationsModule, AppRoutingModule, ],
 	providers: [],
 	bootstrap: [AppComponent],
 })
