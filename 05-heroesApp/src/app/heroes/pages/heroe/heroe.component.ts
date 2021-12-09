@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { Heroe } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-heroe',
   templateUrl: './heroe.component.html',
-  styles: [
+  styles: [`
+  img{
+    width:100%
+  }
+  
+  `
   ]
 })
 export class HeroeComponent implements OnInit {
 
 
   heroe!: Heroe 
-  constructor(private route: ActivatedRoute, private heroeService: HeroesService) {
+  constructor(private route: ActivatedRoute, private heroeService: HeroesService, private router: Router) {
     
    }
 
@@ -24,4 +29,7 @@ export class HeroeComponent implements OnInit {
     })
   }
 
+  regresar() {
+    this.router.navigate(["/heroes/listado"])
+  }
 }
