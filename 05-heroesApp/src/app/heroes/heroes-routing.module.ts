@@ -24,16 +24,16 @@ const routes: Routes = [
 				path: 'editar/:id',
 				component: AgregarComponent,
 			},
+			
+			{
+				path: 'buscar',
+				component: BuscarComponent,
+			},
 			{
 				path: ':id',
 				component: HeroeComponent,
 				
 			},
-			{
-				path: 'buscar',
-				component: BuscarComponent,
-			},
-			
 			{
 				path: '**',
 				redirectTo: 'listado',
