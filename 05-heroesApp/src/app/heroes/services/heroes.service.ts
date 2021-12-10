@@ -16,12 +16,17 @@ export class HeroesService {
     return this.http.get<Heroe[]>(this.baseUrl + "/heroes")
   }
 
-  getHeroeById(id: string) {
+  getHeroeById(id: string): Observable<Heroe> {
     return this.http.get<Heroe>(this.baseUrl + "/heroes/" + id)
   }
 
-  getHeroeByName(name: string) {
+  getHeroeByName(name: string) : Observable<Heroe[]>{
     console.log(name)
     return this.http.get<Heroe[]>(`${this.baseUrl}/heroes?q=${name}&_limit=6`)
   }
+
+  agregarHeroe(heroe: Heroe): Observable<Heroe> {
+    return this.http.post<Heroe>(`${this.baseUrl}/heroes`, heroe)
+  }
+
 }
