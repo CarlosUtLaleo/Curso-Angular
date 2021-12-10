@@ -12,12 +12,16 @@ export class HeroesService {
 
   constructor(private http: HttpClient) { }
 
-  getHeroes():Observable<Heroe[]> {
-    return this.http.get<Heroe[]>(this.baseUrl+"/heroes")
+  getHeroes(): Observable<Heroe[]> {
+    return this.http.get<Heroe[]>(this.baseUrl + "/heroes")
   }
 
   getHeroeById(id: string) {
-    return this.http.get<Heroe>(this.baseUrl+"/heroes/"+id)
+    return this.http.get<Heroe>(this.baseUrl + "/heroes/" + id)
   }
 
+  getHeroeByName(name: string) {
+    console.log(name)
+    return this.http.get<Heroe[]>(`${this.baseUrl}/heroes?q=${name}&_limit=6`)
+  }
 }
