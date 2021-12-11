@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -30,11 +30,13 @@ export class AgregarComponent implements OnInit {
     }
   ]
 
-  constructor(private route: ActivatedRoute, private heroesService:HeroesService) { }
+  constructor(private route: ActivatedRoute,private router:Router , private heroesService:HeroesService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(({ id }) => {
-      console.log(id)
+      this.heroesService.getHeroeById(id).subscribe(resp => {
+        this.heroe = resp;
+      })
     })
   
   }
@@ -44,10 +46,18 @@ export class AgregarComponent implements OnInit {
       return;
     }
 
-    this.heroesService.agregarHeroe(this.heroe).subscribe(
-      resp => {
+    if (this.heroe.id) {
+      this.heroesService.actualizarHeroe(this.heroe)
+      .subscribe(resp => console.log("Actualizando: ",resp))
+    } else {
+      this.heroesService.agregarHeroe(this.heroe).subscribe(
+        resp => {
+          this.router.navigate(["/heroes",resp.id])
         console.log("Respuesta: ", resp)
       }
     )
+    }
+
+    
   }
 }
