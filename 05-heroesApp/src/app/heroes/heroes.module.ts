@@ -11,6 +11,7 @@ import { MaterialModule } from '../material/material.module';
 import { TarjetaComponentComponent } from './components/tarjeta-component/tarjeta-component.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import { FormsModule } from '@angular/forms';
+import { ConfirmarComponent } from './components/confirmar/confirmar.component';
 
 
 
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     ListadoComponent,
     TarjetaComponentComponent,
     ImagenPipe,
+    ConfirmarComponent,
   ],
   imports: [
     CommonModule,
