@@ -30,4 +30,8 @@ export class DinamicossComponent {
 	};
 
 	guardar() {}
+
+	eliminar(index: number) {
+		this.persona.favoritos.splice(index, 1);
+	}
 }
