@@ -10,8 +10,8 @@
 				class="form-control"
 				placeholder="Nombre de la persona"
 				name="nombre"
-				ngModel
-				required="" />
+				[(ngModel)]="persona.nombre"
+				required />
 			<span class="form-text text-danger" *ngIf="miFormulario.controls['nombre']?.invalid"
 				>Este campo es obligatorio</span
 			>
@@ -36,17 +36,19 @@
 	<div class="mb-3 row">
 		<label class="col-sm-3 col-form-label">Favoritos</label>
 		<div class="col-sm-9">
-			<input class="form-control mb-1" />
-			<input class="form-control mb-1" />
-			<input class="form-control mb-1" />
-			<input class="form-control mb-1" />
+			<input
+				class="form-control mb-1"
+				[(ngModel)]="juego.nombre"
+				*ngFor="let juego of persona.favoritos; let i = index"
+				name="favorito_{{ i }}"
+				required />
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-9">
 			<button
-				[disabled]="miFormulario.controls['nombre']?.invalid"
+				[disabled]="miFormulario.invalid"
 				(click)="guardar()"
 				class="btn btn-primary floar-rigth">
 				Guardar
@@ -54,3 +56,6 @@
 		</div>
 	</div>
 </form>
+
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>
