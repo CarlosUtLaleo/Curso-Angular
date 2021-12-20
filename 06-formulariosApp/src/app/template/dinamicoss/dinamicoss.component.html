@@ -26,9 +26,10 @@
 					class="form-control"
 					placeholder="Agregar favorito"
 					name="nombre"
-					ngModel
+					[(ngModel)]="nuevoJuego"
+					name="nuevoJuego"
 					required="" />
-				<button class="btn btn-outline-primary">Agregar</button>
+				<button class="btn btn-outline-primary" (click)="agregarJuego()">Agregar</button>
 			</div>
 		</div>
 	</div>
