@@ -31,6 +31,9 @@
 						ngModel
 						name="precio"
 						required />
+					<span class="form-text text-danger" *ngIf="precioValido()"
+						>El precio debe ser 0 o mayor</span
+					>
 				</div>
 			</div>
 
@@ -48,7 +51,12 @@
 
 			<div class="row">
 				<div class="col">
-					<button type="submit" class="btn btn-primary float-end">Guardar</button>
+					<button
+						[disabled]="miFormulario.invalid"
+						type="submit"
+						class="btn btn-primary float-end">
+						Guardar
+					</button>
 				</div>
 			</div>
 		</form>
