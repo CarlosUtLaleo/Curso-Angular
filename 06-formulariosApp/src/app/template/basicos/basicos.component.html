@@ -3,11 +3,16 @@
 
 <div class="ro">
 	<div class="col">
-		<form action="">
+		<form (ngSubmit)="guardar(miFomulario)" #miFomulario="ngForm">
 			<div class="mb-3 row">
 				<label class="col-sm-3 col-form-label">Producto</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" placeholder="Nombre del producto" />
+					<input
+						type="text"
+						class="form-control"
+						placeholder="Nombre del producto"
+						ngModel
+						name="producto" />
 					<span class="form-text text-danger">Debe de ser de 3 letras</span>
 				</div>
 			</div>
@@ -15,7 +20,12 @@
 			<div class="mb-3 row">
 				<label class="col-sm-3 col-form-label">Precio</label>
 				<div class="col-sm-9">
-					<input type="number" class="form-control" placeholder="Precio del producto" />
+					<input
+						type="number"
+						class="form-control"
+						placeholder="Precio del producto"
+						ngModel
+						name="precio" />
 				</div>
 			</div>
 
@@ -25,7 +35,10 @@
 					<input
 						type="number"
 						class="form-control"
-						placeholder="Existencias del producto" />
+						placeholder="Existencias del producto"
+						name="existencias"
+						ngModel
+						required />
 				</div>
 			</div>
 
@@ -35,5 +48,12 @@
 				</div>
 			</div>
 		</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<span>Valid</span>
+		<pre>{{ miFomulario.value | json }}</pre>
 	</div>
 </div>
