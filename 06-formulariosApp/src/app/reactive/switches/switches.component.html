@@ -1,1 +1,60 @@
-<p>switches works!</p>
+<h2>Reactive: Switches</h2>
+<hr />
+
+<form>
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Genero</label>
+		<div class="col-sm-9">
+			<div class="form-check">
+				<input
+					type="radio"
+					class="form-check-input"
+					name="radioGenero"
+					value="M"
+					id="radioMasculino" />
+				<label class="form-check-label" for="radioMasculino">Masculino</label>
+			</div>
+
+			<div class="form-check">
+				<input
+					type="radio"
+					class="form-check-input"
+					name="radioGenero"
+					value="F"
+					id="radioFemenino" />
+				<label class="form-check-label" for="radioFemenino">Femenino</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Notificaciones</label>
+		<div class="col-sm-9">
+			<div class="form-check form-switch">
+				<input
+					type="checkbox"
+					class="form-check-input"
+					name="notificaciones"
+					id="notificaciones" />
+				<label class="form-check-label" for="notificaciones"
+					>Quiero recibir notificaciones</label
+				>
+			</div>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label class="col-sm-3 col-form-label">Terminos y condiciones</label>
+		<div class="col-sm-9">
+			<input type="checkbox" class="form-check-input" name="terminos" id="terminos" />
+			<label class="form-check-label" for="notificaciones" required
+				>Terminos y condiciones de uso</label
+			>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<button class="btn btn-primary float-right">Guardar</button>
+		</div>
+	</div>
+</form>
