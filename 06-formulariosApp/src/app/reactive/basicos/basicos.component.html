@@ -1,7 +1,7 @@
 <h2>Reactive: Básicos</h2>
 <hr />
 
-<div class="ro">
+<div class="row" [formGroup]="miFormulario">
 	<div class="col">
 		<form>
 			<div class="mb-3 row">
@@ -11,7 +11,8 @@
 						type="text"
 						class="form-control"
 						placeholder="Nombre del producto"
-						name="producto" />
+						name="producto"
+						formControlName="nombre" />
 					<span class="form-text text-danger">Debe de ser de 3 letras</span>
 				</div>
 			</div>
@@ -45,5 +46,21 @@
 				</div>
 			</div>
 		</form>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<span>Valid</span>
+		<pre>{{ miFormulario.valid | json }}</pre>
+
+		<span>Pristine</span>
+		<pre>{{ miFormulario.pristine | json }}</pre>
+
+		<span>Touched</span>
+		<pre>{{ miFormulario.touched | json }}</pre>
+
+		<span>Value</span>
+		<pre>{{ miFormulario.value | json }}</pre>
 	</div>
 </div>
