@@ -25,10 +25,9 @@
 				<input
 					class="form-control"
 					placeholder="Agregar favorito"
-					name="nombre"
-					name="nuevoJuego"
+					[formControl]="nuevoFavorito"
 					required="" />
-				<button class="btn btn-outline-primary">Agregar</button>
+				<button class="btn btn-outline-primary" (click)="agregarFavorito()">Agregar</button>
 			</div>
 		</div>
 	</div>
@@ -40,7 +39,7 @@
 				class="input-group mb-1"
 				*ngFor="let favorito of favoritosArr.controls; let i = index">
 				<input class="form-control" required [formControlName]="i" />
-				<button class="btn btn-outline-danger">Eliminar</button>
+				<button class="btn btn-outline-danger" (click)="borrar(i)">Eliminar</button>
 			</div>
 		</div>
 	</div>
@@ -57,3 +56,6 @@
 <br />
 <span>Value</span>
 <pre>{{ miFormulario.value | json }} </pre>
+
+<span>Agregar juego</span>
+<pre>{{nuevoFavorito.valid}} </pre>
