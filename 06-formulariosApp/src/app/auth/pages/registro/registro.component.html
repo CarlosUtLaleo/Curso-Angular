@@ -34,7 +34,10 @@
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Username</label>
         <div class="col-sm-9">
-          <input type="email" name="" id="" class="form-control" placeholder="Nombre codigo del usuario">          
+          <input type="email" name="" id="" class="form-control" placeholder="Nombre codigo del usuario" formControlName="username">      
+          <span class="form-text text-danger" *ngIf="campoNoValido('username')">
+            El username no puede ser strider
+          </span>     
         </div>
       </div>
 
@@ -68,12 +71,17 @@
 
 <h2>Form valid: {{miFormulario.valid}}</h2>
 
-<h2>Nombre</h2>
+<h5>Nombre</h5>
 <pre>
   {{ miFormulario.controls['nombre'].errors | json}}
 </pre>
 
-<h2>email</h2>
+<h5>email</h5>
 <pre>
   {{ miFormulario.controls['email'].errors | json}}
+</pre>
+
+<h5>Username</h5>
+<pre>
+  {{ miFormulario.controls['username'].errors | json}}
 </pre>
