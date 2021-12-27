@@ -37,10 +37,25 @@ export class RegistroComponent implements OnInit {
 		private emailValidator: EmailValidatorService
 	) {}
 
+	get emailErrorMsg(): string {
+		const errors = this.miFormulario.get('email');
+		if (errors?.getError('required')) {
+			return 'Email es obligatorio';
+		} else if (errors?.getError('pattern')) {
+			return 'El valor ingresado no tiene formato de correo';
+		} else if (errors?.getError('emailTomado')) {
+			return 'El email ya fue tomado';
+		}
+
+		return '';
+	}
 	ngOnInit(): void {
 		this.miFormulario.reset({
 			nombre: 'Carlos Utrilla',
 			email: 'carlos@emial.com',
+			username: 'fernando_her85',
+			password: '123456',
+			password2: '123456',
 		});
 	}
 
