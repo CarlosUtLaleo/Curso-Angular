@@ -2,12 +2,12 @@
 <hr>
 
 <form [formGroup]="miFormulario">
-  <div class="row">
+  <div class="row mb-3">
     <div class="col">
       <label class="form-label"></label>
-      <select  class="form-content" formControlName="region">
+      <select  class="form-control" formControlName="region">
         <option value="">-- Seleccione continiente --</option>
-        <option value="1">America</option>
+        <option *ngFor="let item of regiones" [value]="item | lowercase">{{item}} </option>
       </select>
     </div>
   </div>
