@@ -13,6 +13,7 @@ export class SelectorPageComponent implements OnInit {
 	miFormulario: FormGroup = this.fb.group({
 		region: ['', Validators.required],
 		pais: ['', Validators.required],
+		frontera: ['', Validators.required],
 	});
 
 	regiones: string[] = [];
@@ -31,5 +32,7 @@ export class SelectorPageComponent implements OnInit {
 				switchMap((region) => this.paisesService.getPaisesPorRegion(region))
 			)
 			.subscribe((region) => (this.paises = region));
+
+		this.miFormulario.get('pais')?.valueChanges.subscribe((code) => console.log(code));
 	}
 }

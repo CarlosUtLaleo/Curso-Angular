@@ -21,9 +21,22 @@
             <select class="form-control"
                     formControlName="pais">
                 <option value="">-- Seleccione el Pais --</option>
-                <option *ngFor="let pais of paises">
+                <option *ngFor="let pais of paises" [value]="pais.cca3">
                         {{pais.name.common}}
                 </option>
+            </select>
+        </div>
+    </div>
+
+     <div class="row mt-5">
+        <div class="col">
+            <label class="form-label">Fronteras:</label>
+            <select class="form-control"
+                    formControlName="pais">
+                <option value="">-- Seleccione el Pais fronterizo --</option>
+               <!--  <option *ngFor="let pais of paises">
+                        {{pais.name.common}}
+                </option> -->
             </select>
         </div>
     </div>
