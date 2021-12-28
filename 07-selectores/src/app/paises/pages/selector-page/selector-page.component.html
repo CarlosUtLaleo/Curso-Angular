@@ -1,1 +1,18 @@
-<p>selector-page works!</p>
+<h1 class="mt-5">Selectores anidados</h1>
+<hr>
+
+<form [formGroup]="miFormulario">
+  <div class="row">
+    <div class="col">
+      <label class="form-label"></label>
+      <select  class="form-content" formControlName="region">
+        <option value="">-- Seleccione continiente --</option>
+        <option value="1">America</option>
+      </select>
+    </div>
+  </div>
+</form>
+
+<h3>Formulario</h3>
+<pre>Valid: {{miFormulario.valid | json}} </pre>
+<pre>{{miFormulario.value | json}} </pre>
