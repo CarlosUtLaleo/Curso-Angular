@@ -2,15 +2,31 @@
 <hr>
 
 <form [formGroup]="miFormulario">
-  <div class="row mb-3">
-    <div class="col">
-      <label class="form-label"></label>
-      <select  class="form-control" formControlName="region">
-        <option value="">-- Seleccione continiente --</option>
-        <option *ngFor="let item of regiones" [value]="item | lowercase">{{item}} </option>
-      </select>
+ <div class="row mt-5">
+        <div class="col">
+            <label class="form-label">Continente:</label>
+            <select class="form-control"
+                    formControlName="region">
+                <option value="">-- Seleccione Continente --</option>
+                <option *ngFor="let region of regiones">
+                        {{region}}
+                </option>
+            </select>
+        </div>
     </div>
-  </div>
+ 
+    <div class="row mt-5">
+        <div class="col">
+            <label class="form-label">Pais:</label>
+            <select class="form-control"
+                    formControlName="pais">
+                <option value="">-- Seleccione el Pais --</option>
+                <option *ngFor="let pais of paises">
+                        {{pais.name.common}}
+                </option>
+            </select>
+        </div>
+    </div>
 </form>
 
 <h3>Formulario</h3>
