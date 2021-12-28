@@ -7,7 +7,7 @@ import { PaisSmall, Pais } from '../interfaces/paises.interface';
 	providedIn: 'root',
 })
 export class PaisesServiceService {
-	private _baseUrl: string = 'https://restcountries.com/v3.1';
+	private _baseUrl: string = 'https://restcountries.com/v2';
 	private _regiones: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
 	get regiones() {
@@ -25,7 +25,7 @@ export class PaisesServiceService {
 		if (!codigo) {
 			return of(null);
 		}
-		const url = this._baseUrl + '/alpha?codes=' + codigo;
+		const url = this._baseUrl + '/alpha/' + codigo;
 		return this.http.get<Pais>(url);
 	}
 }
