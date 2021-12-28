@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PaisSmall } from '../../interfaces/paises.interface';
 import { PaisesServiceService } from '../../services/paises-service.service';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
 	selector: 'app-selector-page',
@@ -21,13 +22,14 @@ export class SelectorPageComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.regiones = this.paisesService.regiones;
-
-		this.miFormulario.get('region')?.valueChanges.subscribe((region) => {
-			console.log(region);
-
-			this.paisesService.getPaisesPorRegion(region).subscribe((paises) => {
-				this.paises = paises;
-			});
-		});
+		this.miFormulario
+			.get('region')
+			?.valueChanges.pipe(
+				tap((_) => {
+					this.miFormulario.get('pais')?.reset('');
+				}),
+				switchMap((region) => this.paisesService.getPaisesPorRegion(region))
+			)
+			.subscribe((region) => (this.paises = region));
 	}
 }
