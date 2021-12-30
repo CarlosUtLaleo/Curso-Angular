@@ -33,7 +33,11 @@ export class MarcadoresComponent implements AfterViewInit {
 		// const marker = new mapboxgl.Marker().setLngLat(this.center).addTo(this.mapa);
 	}
 
-	irMarcador() {}
+	irMarcador(marker: mapboxgl.Marker) {
+		this.mapa.flyTo({
+			center: marker.getLngLat(),
+		});
+	}
 	agregarMarcador() {
 		const color = '#xxxxxx'.replace(/x/g, (y) => ((Math.random() * 16) | 0).toString(16));
 		const newMarcador = new mapboxgl.Marker({ draggable: true, color: color })
@@ -42,4 +46,8 @@ export class MarcadoresComponent implements AfterViewInit {
 
 		this.marcadores.push({ color, marker: newMarcador });
 	}
+
+	guardarMarcadoresLocalStorage() {}
+
+	leerLocalStorage() {}
 }
