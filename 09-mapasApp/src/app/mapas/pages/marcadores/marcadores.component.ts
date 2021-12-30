@@ -22,6 +22,14 @@ export class MarcadoresComponent implements AfterViewInit {
 			zoom: 17,
 		});
 
-		const marker = new mapboxgl.Marker().setLngLat(this.center).addTo(this.mapa);
+		// const marker = new mapboxgl.Marker().setLngLat(this.center).addTo(this.mapa);
+	}
+
+	irMarcador() {}
+	agregarMarcador() {
+		const color = '#xxxxxx'.replace(/x/g, (y) => ((Math.random() * 16) | 0).toString(16));
+		const newMarcador = new mapboxgl.Marker({ draggable: true, color: color })
+			.setLngLat(this.center)
+			.addTo(this.mapa);
 	}
 }
