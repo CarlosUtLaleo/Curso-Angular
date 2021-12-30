@@ -11,12 +11,13 @@
 		</div>
 
 		<div class="col-auto">
-			<span class="form-text" *ngIf="tieneError('nombre')" error-msg color="red">Este campo es requerido</span>
+			<span class="form-text" *ngIf="tieneError('nombre')" error-msg [color]="color" [mensaje]="texto1"></span>
 		</div>
 
 		<div class="row mt-5">
 			<div class="col">
-				<button class="btn btn-primary">Guardar</button>
+				<button class="btn btn-primary" (click)="cambiarTexto()">Guardar</button>
+				<button class="btn btn-primary" (click)="cambiarColor()">CarmbiarColor</button>
 			</div>
 		</div>
 	</div>

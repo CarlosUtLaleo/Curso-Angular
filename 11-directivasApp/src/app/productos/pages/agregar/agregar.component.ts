@@ -12,6 +12,15 @@ export class AgregarComponent {
 	});
 	constructor(private fb: FormBuilder) {}
 
+	texto1: string = 'Debe ingresar este campo';
+	color: string = ' red';
+	cambiarTexto() {
+		this.texto1 = 'Juan Carlos';
+	}
+	cambiarColor() {
+		const color = '#xxxxxx'.replace(/x/g, (y) => ((Math.random() * 16) | 0).toString(16));
+		this.color = color;
+	}
 	tieneError(campo: string) {
 		return this.miFormulario.get(campo)?.invalid || false;
 	}
