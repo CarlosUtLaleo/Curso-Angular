@@ -1,3 +1,5 @@
+<h1>Gráfica de barras</h1>
+
 <div class="row">
 	<div class="col">
 		<div style="display: block">
@@ -8,7 +10,12 @@
 				[type]="barChartType">
 			</canvas>
 		</div>
-		<button mat-button mat-raised-button color="primary" (click)="randomize()">
+		<button
+			mat-button
+			mat-raised-button
+			color="primary"
+			(click)="randomize()"
+			class="btn btn-primary float-end">
 			Update
 		</button>
 	</div>
