@@ -47,6 +47,9 @@ export class MarcadoresComponent implements AfterViewInit {
 			.addTo(this.mapa);
 
 		this.marcadores.push({ color, marker: newMarcador });
+		newMarcador.on('dragend', () => {
+			this.guardarMarcadoresLocalStorage();
+		});
 		this.guardarMarcadoresLocalStorage();
 	}
 
@@ -80,6 +83,15 @@ export class MarcadoresComponent implements AfterViewInit {
 				.setLngLat(m.centro!)
 				.addTo(this.mapa);
 			this.marcadores.push({ marker: newMarker, color: m.color });
+
+			newMarker.on('dragend', () => {
+				this.guardarMarcadoresLocalStorage();
+			});
 		});
+	}
+	borrarMarcador(i: number) {
+		this.marcadores[i].marker?.remove();
+		this.marcadores.splice(i, 1);
+		this.guardarMarcadoresLocalStorage();
 	}
 }
