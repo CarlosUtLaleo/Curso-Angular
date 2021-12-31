@@ -3,12 +3,11 @@ const cors = require('cors');
 
 require('dotenv').config();
 
-console.log(process.env);
-
 //Crear servidor de expres
-
 const app = express();
 
+//Directorio publico
+app.use(express.static('public'));
 //CORS
 app.use(cors());
 
