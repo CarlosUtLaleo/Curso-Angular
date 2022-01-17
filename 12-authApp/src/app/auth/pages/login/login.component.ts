@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-login",
@@ -12,10 +13,10 @@ export class LoginComponent {
 		password: ["", [Validators.required, Validators.minLength(5)]],
 	});
 
-	constructor(private fb: FormBuilder) {}
+	constructor(private fb: FormBuilder, private Router: Router) {}
 
 	login() {
 		console.log(this.miFormulario.value);
-		console.log(this.miFormulario.valid);
+		this.Router.navigateByUrl("/dashboard");
 	}
 }
