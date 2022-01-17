@@ -23,7 +23,6 @@ const crearUsuario = async (req, res = response) => {
 		const salt = bcrypt.genSaltSync();
 		dbUser.password = bcrypt.hashSync(password, salt)
 		// Generar el JWT
-
 		const token = await generateJWT(dbUser.id, name)
 
 		// Crear usario de BD
@@ -33,20 +32,60 @@ const crearUsuario = async (req, res = response) => {
 		return res.status(201).json({
 				ok: true,
 				uid: dbUser.id,
-			name,
+				name,
 				token
 			})
 	} catch (error) {
 		console.log(error)
 		return res.status(500).json({
-		ok: false,
-		msg: 'Por favor hable con el administrador',
-	});
+			ok: false,
+			msg: 'Por favor hable con el administrador',
+		});
 	}
 };
 
-const loginUsuario = (req, res = response) => {
+const  loginUsuario = async (req, res = response) => {
 	const { email, password } = req.body;
+
+	try {
+		const dbUser = await Usuario.findOne({ email })
+		
+		if (!dbUser) {
+			return res.status(400).json({
+				ok: false,
+				msg: "El correo no existe"
+			})
+		}
+
+		///Confirmar si password hace match
+		const validPassword = bcrypt.compareSync(password, dbUser.password)
+
+		if (!validPassword) {
+			return res.status(400).json({
+				ok: false,
+				msg: "Password no valido"
+			})
+		}
+
+		// Generar JWT
+		const token = await generateJWT(dbUser.id, dbUser.name);
+
+		//Respuesta
+		return res.json({
+			ok: true,
+			uid: dbUser.id,
+			name: dbUser.name,
+			token
+		})
+
+	} catch (error) {
+		console.log(error)
+		return res.status(500).json({
+			ok: false,
+			msg: 'Por favor hable con el administrador',
+		});
+	}
+
 	console.log(email, password);
 	return res.json({
 		ok: true,
