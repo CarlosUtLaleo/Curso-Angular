@@ -93,15 +93,20 @@ const  loginUsuario = async (req, res = response) => {
 	});
 };
 
-const token = (req, res) => {
+const revalidarToken = async (req, res) => {
+
+	const { uid, name } = req;
+
+	const token = await generateJWT(uid, name);
 	return res.json({
 		ok: true,
-		msg: 'Renew',
+		uid, name,
+		token
 	});
 };
 
 module.exports = {
 	crearUsuario,
 	loginUsuario,
-	token,
+	revalidarToken,
 };
