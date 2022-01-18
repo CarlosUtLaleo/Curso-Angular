@@ -19,9 +19,12 @@ export class LoginComponent {
 	login() {
 		console.log(this.miFormulario.value);
 		const { email, password } = this.miFormulario.value;
-		this.authService.login(email, password).subscribe((resp) => {
-			console.log(resp);
+		this.authService.login(email, password).subscribe((ok) => {
+			if (ok) {
+				this.Router.navigateByUrl("/dashboard");
+			} else {
+				//	TODO: mostrar mensaje de error
+			}
 		});
-		// this.Router.navigateByUrl("/dashboard");
 	}
 }
