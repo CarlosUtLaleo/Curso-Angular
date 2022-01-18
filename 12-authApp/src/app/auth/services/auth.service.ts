@@ -31,6 +31,7 @@ export class AuthService {
 				this._usuario = {
 					name: resp.name!,
 					uid: resp.uid!,
+					email: resp.email!,
 				};
 				return resp.ok;
 			}),
@@ -50,6 +51,7 @@ export class AuthService {
 					this._usuario = {
 						name: resp.name!,
 						uid: resp.uid!,
+						email: resp.email!,
 					};
 				}
 			}),
@@ -67,6 +69,7 @@ export class AuthService {
 				this._usuario = {
 					name: resp.name!,
 					uid: resp.uid!,
+					email: resp.email!,
 				};
 				return resp.ok;
 			}),

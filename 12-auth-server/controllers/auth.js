@@ -33,7 +33,8 @@ const crearUsuario = async (req, res = response) => {
 				ok: true,
 				uid: dbUser.id,
 				name,
-				token
+				token,
+				email
 			})
 	} catch (error) {
 		console.log(error)
@@ -75,6 +76,7 @@ const  loginUsuario = async (req, res = response) => {
 			ok: true,
 			uid: dbUser.id,
 			name: dbUser.name,
+			email: dbUser.email,
 			token
 		})
 
@@ -95,12 +97,16 @@ const  loginUsuario = async (req, res = response) => {
 
 const revalidarToken = async (req, res) => {
 
-	const { uid, name } = req;
+	const { uid } = req;
+	// Leer la base de datos
+	const dbUser = await Usuario.findById(uid);
 
-	const token = await generateJWT(uid, name);
+	const token = await generateJWT(uid, dbUser.name);
 	return res.json({
 		ok: true,
-		uid, name,
+		uid,
+		name: dbUser.name,
+		email: dbUser.email,
 		token
 	});
 };
