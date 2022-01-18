@@ -18,6 +18,25 @@ export class AuthService {
 
 	constructor(private http: HttpClient) {}
 
+	registro(email: string, password: string, name: string) {
+		const url = `${this.baseUrl}/auth/new`;
+		const body = {
+			name,
+			password,
+			email,
+		};
+		return this.http.post<AuthResponse>(url, body).pipe(
+			map((resp) => {
+				localStorage.setItem("token", resp.token!);
+				this._usuario = {
+					name: resp.name!,
+					uid: resp.uid!,
+				};
+				return resp.ok;
+			}),
+			catchError((err) => of(err.error.msg))
+		);
+	}
 	login(email: string, password: string) {
 		const url = `${this.baseUrl}/auth`;
 		const body = {
